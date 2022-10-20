@@ -1,26 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <p>Sem a diretiva</p>
+  <p v-texto="{ cor: 'red', tamanhoFonte: '200%', totalCaracteres: 15 }">Minha primeira diretiva customizada</p>
+  <p v-texto="configuracaoTexto">Teste</p>
+  <div v-posicao:absolute="75" v-texto="{cor:'green', totalCaracteres: 100}">Olá sou um binding de argumento e valor
+  </div>
+  <span>Codigo A: </span> <input type="text"> <span
+    v-informacao:simples.umCliqueMouse="'Você encontrará o codigo A na parte frontal do equipamento'">i</span>
+  <br>
+  <br>
+  <span>Codigo B: </span> <input type="text"> <span
+    v-informacao:destacado.doisCliqueMouse.sairAutomaticamente="'Você encontrará o codigo B na parte traseira do equipamento'">i</span>
+  <hr>
+  <h1 v-colorir="'green'">diretiva customizada registrada localmente</h1>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import colorirFundoTexto from '@/directives/colorirFundoTexto'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  directives: {
+    colorir: colorirFundoTexto
+  },
+  data: () => ({
+    configuracaoTexto: { cor: 'blue', tamanhoFonte: '300%', totalCaracteres: 4 }
+  })
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
